@@ -1,6 +1,9 @@
 import React from 'react'
-import './SillyText.scss'
+import styled from 'styled-components'
 
-export default ({ children }) => (
-  <h1 className="SillyText">Silly {children}</h1>
+const MainText = styled.h1`
+    color: pink
+`
+export default ({ text }) => (
+  <MainText>Silly {text}</MainText>
 )

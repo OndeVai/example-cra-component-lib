@@ -4,9 +4,8 @@ import {SillyText, SeriousText} from './lib'
 
 const App = () => (
     <div style={{ width: 640, margin: "15px auto" }}>
-        <h1>Hello React</h1>
-        <SillyText>Hello</SillyText>
-        <SeriousText>Hello</SeriousText>
+        <SillyText text="hello"/>
+        <SeriousText text="hello"/>
     </div>
 );
 
