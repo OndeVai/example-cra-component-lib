@@ -1,18 +1,26 @@
 {
-  "name": "test-component-library",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5"
+  "name": "example-cra-component-lib",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OndeVai/example-cra-component-lib.git"
   },
+  "version": "3.2.0",
+  "dependencies": {},
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build:commonjs": "cross-env NODE_ENV=production babel src/lib --out-dir dist/commonjs --no-babelrc --config-file ./.babelrc-commonjs --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
+    "build:es": "cross-env NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
+    "build": "rm -rf dist && npm run build:es && npm run build:commonjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "scriptComments": "the build script creates a commonjs and an es6 build; consumers using es6 can use the same import/export syntax and take advantage of tree shaking, while the commonjs can be used for those not targeting es6 (like node)",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -21,5 +29,18 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "cross-env": "^5.2.0",
+    "node-sass": "^4.11.0",
+    "prettier": "^1.16.4",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-scripts": "2.1.5"
+  },
+  "peerDependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  }
 }
